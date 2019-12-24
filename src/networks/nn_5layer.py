@@ -18,6 +18,3 @@ class Net(torch.nn.Module):
         x = self.out(x)
         return x
 
-
-net = Net(n_feature=2, n_hidden=10, n_output=2)
-print(net)

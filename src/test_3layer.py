@@ -4,9 +4,12 @@ import numpy as np
 from src.datas import x, y
 from src.networks.nn_3layer import Net as Net3
 
+# 隐藏层单元为6个
 net = Net3(n_feature=2, n_hidden=6, n_output=2)
 
+# 学习速率设置为0.02
 optimizer = torch.optim.SGD(net.parameters(), lr=0.02)
+# 损失函数使用交叉熵
 loss_func = torch.nn.CrossEntropyLoss()
 
 loss_x = []
@@ -15,6 +18,7 @@ loss_y = []
 plt.ion()
 plt.figure(1, figsize=(8, 6))
 
+# 迭代100次
 for t in range(100):
     out = net(x)
     loss = loss_func(out, y)
@@ -43,6 +47,7 @@ for t in range(100):
 plt.subplot(122)
 print(loss_x)
 print(loss_y)
+# 将loss在迭代过程中的变化绘制为散点图
 plt.scatter(np.array(loss_x), np.array(loss_y), c='red', label='Loss')
 
 plt.ioff()
