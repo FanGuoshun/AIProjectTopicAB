@@ -57,7 +57,7 @@ final_opt = tf.matmul(hidden_opt2, W2) + B2  # 隐藏层到输出层正向传播
 # 对输出层计算交叉熵损失
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=final_opt))
 # 梯度下降算法，这里使用了反向传播算法用于修改权重，减小损失
-opt = tf.train.GradientDescentOptimizer(0.05).minimize(loss)
+opt = tf.train.AdamOptimizer(0.05).minimize(loss)
 # 初始化变量
 init = tf.global_variables_initializer()
 # 计算准确率
